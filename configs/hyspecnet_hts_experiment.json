@@ -1,0 +1,41 @@
+{
+  "experiment": "DCVC-UF HT-S migration to HySpecNet-11k",
+  "model": {
+    "name": "DCVC-UF",
+    "structure": "hts",
+    "parameters": 81157632,
+    "chunk_size": 8
+  },
+  "dataset": {
+    "name": "HySpecNet-11k",
+    "split": "hard",
+    "train_patches": 512,
+    "validation_patches": 64,
+    "test_patches": 91,
+    "original_bands": 224,
+    "valid_bands": 202,
+    "evaluated_bands": 200,
+    "patch_height": 128,
+    "patch_width": 128,
+    "normalization": "clip(X, 0, 10000) / 10000",
+    "evaluation_quantization": "uint8"
+  },
+  "training": {
+    "epochs": 20,
+    "global_batch_size": 12,
+    "per_gpu_batch_size": 4,
+    "gpus": [0, 1, 2],
+    "learning_rate": 0.0001,
+    "dataloader_workers_per_rank": 3,
+    "sequence_lengths": [9, 17, 33],
+    "initialization": "official cvpr2026_video_hts.pth.tar"
+  },
+  "evaluation": {
+    "actual_bitstream": true,
+    "qps": [10, 31, 52, 63],
+    "skip_threshold": 0.15,
+    "reset_interval": 0,
+    "bpppc_formula": "total_bits / (128 * 128 * 200)"
+  }
+}
+

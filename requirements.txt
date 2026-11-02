@@ -1,0 +1,10 @@
+numpy
+Pillow
+scipy
+tifffile
+psutil
+cmake
+ninja
+pybind11
+tqdm
+matplotlib

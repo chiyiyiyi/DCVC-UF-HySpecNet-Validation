@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pth
+*.pth.tar
+*.bin
+*.zip
+*.tar.gz
+venv/
+.venv/
+data/
+checkpoints/
+streams/
+
